@@ -9,7 +9,12 @@
     "start": "node index",
     "lint": "eslint .",
     "lint:fix": "pnpm lint -- --fix",
-    "check": "npm-check -u -s",
+    "test": "cross-env NODE_ICU_DATA=node_modules/full-icu jest --passWithNoTests --no-cache --runInBand",
+    "test:watch": "pnpm test -- --watch",
+    "test:staged": "pnpm test -- --findRelatedTests",
+    "test:ci": "pnpm test -- --coverage",
+    "test:coveralls": "pnpm test:ci && coveralls < coverage/lcov.info",
+    "check": "pnpm-check -u -s",
     "prepare": "husky install"
   },
   "keywords": [],
