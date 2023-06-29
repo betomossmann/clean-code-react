@@ -1,7 +1,9 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 
-# **[Beto.dev](http://beto.dev.br/) - React Build**
+# **[BDev](http://beto.dev.br/) - React Build**
 
 ## *ReactJS, Hooks, Recoil, TDD, Clean Architecture, SOLID*
 
