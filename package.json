@@ -8,8 +8,8 @@
   "scripts": {
     "start": "node index",
     "lint": "eslint .",
-    "lint:fix": "pnpm lint -- --fix",
-    "test": "cross-env NODE_ICU_DATA=node_modules/full-icu jest --passWithNoTests --no-cache --runInBand",
+    "lint:fix": "pnpm lint --fix",
+    "test": "jest",
     "test:watch": "pnpm test -- --watch",
     "test:staged": "pnpm test -- --findRelatedTests",
     "test:ci": "pnpm test -- --coverage",
@@ -31,7 +31,7 @@
     "jest": "^29.5.0",
     "lint-staged": "^13.2.3",
     "ts-jest": "^29.1.0",
-    "typescript": "^5.1.6"
+    "typescript": "5.0.4"
   },
   "pnpm": {
     "overrides": {
