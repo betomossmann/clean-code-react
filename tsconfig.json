@@ -8,7 +8,7 @@
     ],
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "jsx": "react",
     "rootDirs": ["src", "tests"],
     "baseUrl": "src",
