@@ -10,15 +10,15 @@
     "module": "esnext",
     "moduleResolution": "node",
     "jsx": "react",
-    "rootDirs": ["src"],
+    "rootDirs": ["src", "tests"],
     "baseUrl": "src",
-    "allowJs": true,
-    "resolveJsonModule": true,
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "@/tests/*": ["../tests/*"]
     },
+    "allowJs": true,
+    "resolveJsonModule": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src", "tests"],
+  "exclude": ["tests/e2e/cypress"]
 }
