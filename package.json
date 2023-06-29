@@ -1,14 +1,18 @@
 {
   "name": "clean-code-react",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "ReactJS, Hooks, Recoil, TDD, Clean Architecture, SOLID",
+  "author": "Gilberto Mossmann",
+  "license": "GNU GPL3",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint -- --fix",
+    "check": "npm-check -u -s",
+    "prepare": "husky install"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.3.2",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
@@ -17,6 +21,13 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "typescript": "^5.1.6"
+  },
+  "pnpm": {
+    "overrides": {
+      "semver@<7.5.2": ">=7.5.2"
+    }
   }
 }
