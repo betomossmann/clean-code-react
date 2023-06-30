@@ -16,10 +16,11 @@ jobs:
       with:
         node-version: 16.x
 
-    - name: pnpm install, make test-coverage
-      run: |
-        pnpm install
-        make test-coverage
+    - name: Install pnpm dependencies
+      run: pnpm install
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@v2
+    - name: Run ts-prune
+      run: pnpm ts-prune --error
+
+    - name: Run tests
+      run: pnpm test:coveralls
