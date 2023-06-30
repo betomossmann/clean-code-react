@@ -16,11 +16,14 @@ jobs:
         with:
           node-version: 16
 
+      - name: 'Test: which'
+        run: which pnpm && which pnpx
+
       - uses: pnpm/action-setup@v2
         name: Install pnpm
-        id: pnpm-install
+        id: pnpm-install --no-frozen-lockfile
         with:
-          version: 7
+          version: 6
           run_install: false
 
       - name: Install pnpm dependencies
