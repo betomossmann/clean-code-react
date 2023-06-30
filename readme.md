@@ -4,7 +4,6 @@
 [![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/betomossmann/clean-code-react/badge.svg)](https://snyk.io/test/github/betomossmann/clean-code-react)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 
 # **[BDev](http://beto.dev.br/) - React Build**
 
