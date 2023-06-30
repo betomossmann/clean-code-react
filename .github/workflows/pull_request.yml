@@ -1,6 +1,6 @@
 on: ["push", "pull_request"]
 
-name: Test Coveralls
+name: Test CI/CD
 
 jobs:
 
@@ -21,7 +21,7 @@ jobs:
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
-        id: pnpm-install --no-frozen-lockfile
+        id: pnpm-install
         with:
           version: 6
           run_install: false
