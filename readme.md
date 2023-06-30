@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/github/betomossmann/clean-code-react/badge.svg?branch=main)](https://coveralls.io/github/betomossmann/clean-code-react?branch=main)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/betomossmann/clean-code-react/badge.svg)](https://snyk.io/test/github/betomossmann/clean-code-react)

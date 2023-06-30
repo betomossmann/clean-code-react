@@ -1,0 +1,54 @@
+on: [push]
+
+name: Push
+
+jobs:
+  install:
+    name: Installing packages
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Cache node_modules
+      user: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock') }}
+
+    - name: Install dependencies
+      run: pnpm install
+
+  unusedexports:
+    name: Find unused exports (dead code)
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Restore node_modules
+      user: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock') }}
+
+    - name: Run ts-prune
+      run: pnpm ts-prune --error
+
+  testing:
+    name: run all tests
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Restore node_modules
+      user: actions/cache@v2
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock') }}
+
+    - name: Run tests
+      run: pnpm test:coveralls
