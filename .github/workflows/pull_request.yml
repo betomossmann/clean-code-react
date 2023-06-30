@@ -30,7 +30,7 @@ jobs:
         run: pnpm ts-prune --error
 
       - name: Run tests
-        run: pnpm test:coveralls
+        run: pnpm test:ci
 
       - name: Coveralls
         uses: coverallsapp/github-action@v2
