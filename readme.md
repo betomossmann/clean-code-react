@@ -1,3 +1,4 @@
+[![Test CI/CD](https://github.com/betomossmann/clean-code-react/actions/workflows/pull_request.yml/badge.svg)](https://github.com/betomossmann/clean-code-react/actions/workflows/pull_request.yml)
 [![Coverage Status](https://coveralls.io/repos/github/betomossmann/clean-code-react/badge.svg?branch=main)](https://coveralls.io/github/betomossmann/clean-code-react?branch=main)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
