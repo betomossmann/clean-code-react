@@ -8,19 +8,26 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - uses: actions/checkout@v1
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
 
-    - name: Use Node.js 16.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16.x
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
 
-    - name: Install npm dependencies
-      run: npm install
+      - name: Install pnpm dependencies
+        run: pnpm install
 
-    - name: Run ts-prune
-      run: npm run ts-prune --error
+      - name: Run ts-prune
+        run: pnpm ts-prune --error
 
-    - name: Run tests
-      run: npm run test:coveralls
+      - name: Run tests
+        run: pnpm test:coveralls
