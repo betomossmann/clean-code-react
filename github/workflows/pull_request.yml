@@ -1,54 +1,25 @@
 on: ["push", "pull_request"]
 
-name: Pull Request
+name: Test Coveralls
 
 jobs:
-  install:
-    name: Installing packages
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
 
-    - name: Cache node_modules
-      user: actions/cache@v2
+    - uses: actions/checkout@v1
+
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v3
       with:
-        path: node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock') }}
+        node-version: 16.x
 
-    - name: Install dependencies
-      run: pnpm install
+    - name: pnpm install, make test-coverage
+      run: |
+        pnpm install
+        make test-coverage
 
-  unusedexports:
-    name: Find unused exports (dead code)
-    runs-on: ubuntu-latest
-    needs: install
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Restore node_modules
-      user: actions/cache@v2
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock') }}
-
-    - name: Run ts-prune
-      run: pnpm ts-prune --error
-
-  testing:
-    name: run all tests
-    runs-on: ubuntu-latest
-    needs: install
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Restore node_modules
-      user: actions/cache@v2
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock') }}
-
-    - name: Run tests
-      run: pnpm test:coveralls
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2
