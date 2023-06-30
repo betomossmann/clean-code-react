@@ -16,11 +16,11 @@ jobs:
       with:
         node-version: 16.x
 
-    - name: Install pnpm dependencies
-      run: pnpm install
+    - name: Install npm dependencies
+      run: npm install
 
     - name: Run ts-prune
-      run: pnpm ts-prune --error
+      run: npm run ts-prune --error
 
     - name: Run tests
-      run: pnpm test:coveralls
+      run: npm run test:coveralls
