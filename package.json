@@ -6,13 +6,13 @@
   "license": "GNU GPL3",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "webpack-dev-server --open",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "test": "jest",
-    "test:watch": "pnpm test -- --watch",
-    "test:staged": "pnpm test -- --findRelatedTests",
-    "test:ci": "pnpm test -- --coverage",
+    "test": "jest --passWithNoTests --no-cache --runInBand",
+    "test:watch": "pnpm t -- --watch",
+    "test:staged": "pnpm t -- --findRelatedTests",
+    "test:ci": "pnpm t -- --coverage",
     "test:coveralls": "pnpm test:ci && coveralls < coverage/lcov.info",
     "check": "pnpm-check -u -s",
     "prepare": "husky install"
@@ -23,12 +23,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.2",
-    "@types/node": "^20.3.2",
+    "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "clean-webpack-plugin": "^4.0.0",
     "coveralls": "^3.1.1",
-    "eslint": "^8.43.0",
+    "eslint": "^8.44.0",
     "eslint-config-standard-with-typescript": "^35.0.0",
     "eslint-plugin-cypress": "^2.13.3",
     "eslint-plugin-import": "^2.27.5",
@@ -41,7 +42,10 @@
     "lint-staged": "^13.2.3",
     "ts-jest": "^29.1.1",
     "ts-prune": "^0.10.3",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "pnpm": {
     "overrides": {
