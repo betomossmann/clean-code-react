@@ -1,6 +1,6 @@
 on: ["push", "pull_request"]
 
-name: Test CI/CD
+name: 'CI/CD'
 
 jobs:
 
@@ -8,23 +8,18 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Install Node.js
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Set node version to 18
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
+          cache: 'pnpm'
 
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 6
-          run_install: false
-
-      - name: Install pnpm dependencies
-        run: pnpm install
+      - run: pnpm install
 
       - name: Run ts-prune
         run: pnpm ts-prune --error
