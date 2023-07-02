@@ -10,8 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 6
+          run_install: false
 
       - name: Set node version to 18
         uses: actions/setup-node@v3
