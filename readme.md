@@ -1,9 +1,11 @@
-[![Test CI/CD](https://github.com/betomossmann/clean-code-react/actions/workflows/pull_request.yml/badge.svg)](https://github.com/betomossmann/clean-code-react/actions/workflows/pull_request.yml)
-[![Coverage Status](https://coveralls.io/repos/github/betomossmann/clean-code-react/badge.svg?branch=main)](https://coveralls.io/github/betomossmann/clean-code-react?branch=main)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-[![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
-[![Known Vulnerabilities](https://snyk.io/test/github/betomossmann/clean-code-react/badge.svg)](https://snyk.io/test/github/betomossmann/clean-code-react)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+<p align="center">
+  <a href="https://github.com/betomossmann/clean-code-react/actions/workflows/pull_request.yml"><img src="https://github.com/betomossmann/clean-code-react/actions/workflows/pull_request.yml/badge.svg" alt="[CI/CD]"></a>
+  <a href="https://coveralls.io/github/betomossmann/clean-code-react?branch=main"><img src="https://coveralls.io/repos/github/betomossmann/clean-code-react/badge.svg?branch=main" alt="[Coverage Status]"></a>
+  <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="[js-standard-style]"></a>
+  <a href="https://www.cypress.io/"><img src="https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg" alt="[Cypress.io]"></a><br>
+  <a href="https://snyk.io/test/github/betomossmann/clean-code-react"><img src="https://snyk.io/test/github/betomossmann/clean-code-react/badge.svg" alt="[Known Vulnerabilities]"></a>
+  <a href="https://opensource.org/licenses/"><img src="https://img.shields.io/badge/License-GPL%20v3-yellow.svg" alt="[GPLv3 License]"></a>
+<p>
 
 # **[BDev](http://beto.dev.br/) - React Build**
 
