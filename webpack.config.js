@@ -35,8 +35,12 @@ module.exports = {
     }]
   },
   devServer: {
-    contentBase: '.dist',
-    writeToDisk: true,
+    devMiddleware: {
+      writeToDisk: true
+    },
+    static: {
+      directory: './dist'
+    },
     historyApiFallback: true
   },
   externals: {
