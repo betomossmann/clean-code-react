@@ -9,9 +9,7 @@
 
 # **[BDev](http://beto.dev.br/) - React Build**
 
-## *ReactJS, Hooks, Recoil, TDD, Clean Architecture, SOLID*
-
-## *Interface para consumir [API enquetes](https://bdev.onrender.com/api-docs/) - [Source](https://github.com/betomossmann/node-clean-api)*
+ *ReactJS, Hooks, Recoil, TDD, Clean Architecture, SOLID: Interface para consumir [API enquetes](https://bdev.onrender.com/api-docs/) - [Source](https://github.com/betomossmann/node-clean-api)*
 
 > ## Princípios
 
