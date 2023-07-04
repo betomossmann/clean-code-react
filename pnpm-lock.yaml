@@ -91,6 +91,9 @@ devDependencies:
   jest-environment-jsdom:
     specifier: ^29.5.0
     version: 29.5.0
+  jest-localstorage-mock:
+    specifier: ^2.4.26
+    version: 2.4.26
   lint-staged:
     specifier: ^13.2.3
     version: 13.2.3
@@ -4599,6 +4602,11 @@ packages:
     dependencies:
       jest-get-type: 29.4.3
       pretty-format: 29.5.0
+    dev: true
+
+  /jest-localstorage-mock@2.4.26:
+    resolution: {integrity: sha512-owAJrYnjulVlMIXOYQIPRCCn3MmqI3GzgfZCXdD3/pmwrIvFMXcKVWZ+aMc44IzaASapg0Z4SEFxR+v5qxDA2w==}
+    engines: {node: '>=6.16.0'}
     dev: true
 
   /jest-matcher-utils@29.5.0:
