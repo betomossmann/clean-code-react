@@ -1,3 +1,4 @@
+import '@/presentation/styles/global.scss'
 import { Router } from '@/presentation/components'
 
 import * as React from 'react'

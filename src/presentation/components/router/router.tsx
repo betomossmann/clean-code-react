@@ -1,4 +1,3 @@
-import '@/presentation/styles/global.scss'
 import { Login } from '@/presentation/pages'
 
 import * as React from 'react'
