@@ -1,11 +1,11 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
 .errorWrap {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .Styles.spinnerWrap {
+  .spinner {
     margin-top: 30px;
   }
 
