@@ -30,6 +30,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
+    if (state.isLoading) { return }
     setState({ ...state, isLoading: true })
     authentication.auth({ email: state.email, password: state.password })
   }
