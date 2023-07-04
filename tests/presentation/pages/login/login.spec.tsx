@@ -2,8 +2,8 @@ import { ValidationStub } from '@/tests/presentation/mocks'
 import { Login } from '@/presentation/pages'
 
 import * as React from 'react'
-import { type RenderResult, render, fireEvent, cleanup } from '@testing-library/react'
 import { faker } from '@faker-js/faker'
+import { type RenderResult, render, fireEvent, cleanup } from '@testing-library/react'
 
 type SutTypes = {
   sut: RenderResult
@@ -53,5 +53,15 @@ describe('Login Component', () => {
     const passwordStatus = sut.getByTestId('password-status')
     expect(passwordStatus.title).toBe(validationStub.errorMessage)
     expect(passwordStatus.textContent).toBe('🔴')
+  })
+
+  it('Should show valid email state if Validation succeeds', () => {
+    const { sut, validationStub } = makeSut()
+    validationStub.errorMessage = null
+    const emailInput = sut.getByTestId('email')
+    fireEvent.input(emailInput, { target: { value: faker.internet.email() } })
+    const emailStatus = sut.getByTestId('email-status')
+    expect(emailStatus.title).toBe('Tudo certo!')
+    expect(emailStatus.textContent).toBe('🟢')
   })
 })
