@@ -1,5 +1,5 @@
 import '@/presentation/styles/global.scss'
-import { Router } from '@/presentation/components'
+import { Router } from '@/main/routes'
 
 import * as React from 'react'
 import { createRoot } from 'react-dom/client'
