@@ -43,7 +43,6 @@
 * DDD
 * Reactive Programming
 * Responsive Layout
-* Conventional Commits
 * GitFlow
 * Modular Design
 * Dependency Diagrams
@@ -66,7 +65,7 @@
 * Webpack
 * SASS + Animations
 * NPM
-* Travis CI
+* Github Actions
 * Faker
 * Coveralls
 * Husky
