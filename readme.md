@@ -3,7 +3,6 @@
   <a href='https://coveralls.io/github/betomossmann/clean-code-react?branch=main'><img src='https://coveralls.io/repos/github/betomossmann/clean-code-react/badge.svg?branch=main' alt='Coverage Status' /></a>
   <a href="http://standardjs.com"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg" alt="[js-standard-style]"></a>
   <a href="https://www.cypress.io/"><img src="https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg" alt="[Cypress.io]"></a><br>
-  <a href="https://app.codacy.com/project/badge/Grade/0a736c5766cd4ec997dbfdbbc8db44d2"><img src="https://app.codacy.com/gh/betomossmann/clean-code-react/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade" alt="Codacy"></a>
   <a href="https://snyk.io/test/github/betomossmann/clean-code-react"><img src="https://snyk.io/test/github/betomossmann/clean-code-react/badge.svg" alt="[Known Vulnerabilities]"></a>
   <a href="https://opensource.org/licenses/"><img src="https://img.shields.io/badge/License-GPL%20v3-yellow.svg" alt="[GPLv3 License]"></a>
 <p>
