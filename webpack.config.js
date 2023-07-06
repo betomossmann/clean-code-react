@@ -1,4 +1,5 @@
 const path = require('path')
+const { DefinePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
@@ -48,6 +49,7 @@ module.exports = {
     'react-dom': 'ReactDOM'
   },
   plugins: [
+    new DefinePlugin({ 'process.env.API_URL': 'https://bdev.onrender.com/api' }),
     new CleanWebpackPlugin()
   ]
 }
