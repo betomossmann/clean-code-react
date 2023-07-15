@@ -1,6 +1,6 @@
 {
   "name": "clean-code-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ReactJS, Hooks, Recoil, TDD, Clean Architecture, SOLID",
   "author": "Gilberto Mossmann",
   "license": "GNU GPL3",
