@@ -49,7 +49,7 @@ module.exports = {
     'react-dom': 'ReactDOM'
   },
   plugins: [
-    new DefinePlugin({ 'process.env.API_URL': 'https://bdev.onrender.com/api' }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new DefinePlugin({ 'process.env.API_URL': JSON.stringify('https://bdev.onrender.com/api') })
   ]
 }
