@@ -34,13 +34,21 @@ const Login: React.FC<Props> = ({ validation, authentication, saveAccessToken }:
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault()
     try {
-      if (state.isLoading || state.emailError || state.passwordError) { return }
+      if (state.isLoading || state.emailError || state.passwordError) {
+        return
+      }
       setState({ ...state, isLoading: true })
-      const account = await authentication.auth({ email: state.email, password: state.password })
+      const account = await authentication.auth({
+        email: state.email, password: state.password
+      })
       await saveAccessToken.save(account.accessToken)
-      navigate('/')
+      navigate('/', { replace: true })
     } catch (error) {
-      setState({ ...state, isLoading: false, mainError: error.message })
+      setState({
+        ...state,
+        isLoading: false,
+        mainError: error.message
+      })
     }
   }
 
