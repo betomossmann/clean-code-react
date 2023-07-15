@@ -1,5 +1,5 @@
 import { mockAuthentication, mockAccountModel } from '@/tests/domain/mocks'
-import { HttpPostClientSpy } from '@/tests/data/usecases/mocks'
+import { HttpPostClientSpy } from '@/tests/data/mocks'
 import { RemoteAuthentication } from '@/data/usecases/authentication'
 import { HttpStatusCode } from '@/data/protocols/http'
 import { InvalidCredentialsError, UnexpectedError } from '@/domain/error'
