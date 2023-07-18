@@ -2,14 +2,16 @@ import Styles from './signup-styles.scss'
 import { Footer, FormStatus, Input, LoginHeader } from '@/presentation/components'
 import { Context } from '@/presentation/contexts/form'
 import { type Validation } from '@/presentation/protocols/validation'
+import { type AddAccount } from '@/domain/usecases'
 
 import React, { useEffect, useState } from 'react'
 
 type Props = {
   validation: Validation
+  addAccount: AddAccount
 }
 
-const SignUp: React.FC<Props> = ({ validation }: Props) => {
+const SignUp: React.FC<Props> = ({ validation, addAccount }: Props) => {
   const [state, setState] = useState({
     isLoading: false,
     name: '',
@@ -35,6 +37,12 @@ const SignUp: React.FC<Props> = ({ validation }: Props) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault()
     setState({ ...state, isLoading: true })
+    await addAccount.add({
+      name: state.name,
+      email: state.email,
+      password: state.password,
+      passwordConfirmation: state.passwordConfirmation
+    })
   }
 
   return (
