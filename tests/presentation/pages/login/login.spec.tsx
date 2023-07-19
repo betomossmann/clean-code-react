@@ -107,7 +107,7 @@ describe('Login Component', () => {
     const { sut, authenticationSpy } = makeSut()
     await simulateValidSubmit(sut)
     await simulateValidSubmit(sut)
-    expect(authenticationSpy.callsCaount).toBe(1)
+    expect(authenticationSpy.callsCount).toBe(1)
   })
 
   it('Should not call Authentication if form is invalid', async () => {
@@ -115,7 +115,7 @@ describe('Login Component', () => {
     const { sut, authenticationSpy } = makeSut({ validationError })
     await simulateValidSubmit(sut)
     fireEvent.submit(sut.getByTestId('form'))
-    expect(authenticationSpy.callsCaount).toBe(0)
+    expect(authenticationSpy.callsCount).toBe(0)
   })
 
   it('Should present error if Authentication fails', async () => {
