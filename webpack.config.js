@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/main/index.tsx',
   output: {
     path: path.join(__dirname, 'dist/js'),
-    publicPath: 'dist/js',
+    publicPath: '/dist/js',
     filename: 'bundle.js'
   },
   resolve: {
@@ -40,7 +40,7 @@ module.exports = {
       writeToDisk: true
     },
     static: {
-      directory: './dist'
+      directory: path.join(__dirname, 'dist')
     },
     historyApiFallback: true
   },
