@@ -167,4 +167,12 @@ describe('SignUp Component', () => {
     expect(history.index).toBe(0)
     expect(history.location.pathname).toBe('/')
   })
+
+  it('Should go to login page', () => {
+    const { sut } = makeSut()
+    const loginLink = sut.getByTestId('login')
+    fireEvent.click(loginLink)
+    expect(history.index).toBe(1)
+    expect(history.location.pathname).toBe('/login')
+  })
 })
