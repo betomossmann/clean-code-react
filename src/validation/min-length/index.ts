@@ -1,1 +1,1 @@
-export * from './ming-length-validation'
+export * from './min-length-validation'
