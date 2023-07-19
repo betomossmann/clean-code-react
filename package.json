@@ -14,11 +14,15 @@
     "test:staged": "pnpm t -- --findRelatedTests",
     "test:ci": "pnpm t -- --coverage",
     "test:coveralls": "pnpm test:ci && coveralls < coverage/lcov.info",
+    "test:cypress": "cypress open",
+    "test:cypress:run": "cypress run",
+    "test:cypress:ci": "start-server-and-test dev:base http-get://localhost:8080 test:cypress:run",
     "check": "pnpm-check -u -s",
     "prepare": "husky install"
   },
   "keywords": [],
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.17.1",
     "@faker-js/faker": "^8.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
@@ -31,6 +35,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "coveralls": "^3.1.1",
     "css-loader": "^6.8.1",
+    "cypress": "^12.17.1",
     "eslint": "^8.44.0",
     "eslint-config-standard-with-typescript": "^35.0.0",
     "eslint-plugin-cypress": "^2.13.3",
