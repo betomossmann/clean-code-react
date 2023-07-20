@@ -1,6 +1,6 @@
-import { faker } from '@faker-js/faker'
+import * as Helper from '../utils/helpers'
 
-const baseUrl: string = Cypress.config().baseUrl
+import { faker } from '@faker-js/faker'
 
 describe('Login', () => {
   beforeEach(() => {
@@ -31,7 +31,7 @@ describe('Login', () => {
     cy.getByTestId('error-wrap').should('not.have.descendants')
   })
 
-  it('Should present error if invalid credencials are provided', () => {
+  it('Should present InvalidCredentialsError on 401', () => {
     cy.getByTestId('email').type(faker.internet.email())
     cy.getByTestId('password').type(faker.string.alphanumeric(5))
     cy.getByTestId('submit').click()
@@ -40,10 +40,10 @@ describe('Login', () => {
       .getByTestId('main-error').should('not.exist')
       .getByTestId('spinner').should('not.exist')
       .getByTestId('main-error').should('contain.text', 'Credenciais inválidas')
-    cy.url().should('eq', `${baseUrl}/login`)
+    Helper.testUrl('/login')
   })
 
-  it('Should present save accessToken if valid credencials are provided', () => {
+  it('Should store account on localStorage if valid credentials are provided', () => {
     cy.getByTestId('email').type('moss_mann@hotmail.com')
     cy.getByTestId('password').type('12345')
     cy.getByTestId('submit').click()
@@ -51,7 +51,7 @@ describe('Login', () => {
       .getByTestId('spinner').should('exist')
       .getByTestId('main-error').should('not.exist')
       .getByTestId('spinner').should('not.exist')
-    cy.url().should('eq', `${baseUrl}/`)
+    Helper.testUrl('/')
     cy.window().then(window => assert.isOk(window.localStorage.getItem('accessToken')))
   })
 })
