@@ -1,5 +1,6 @@
 import { SetStorageMock } from '@/tests/data/mocks'
 import { LocalSaveAccessToken } from '@/data/usecases/save-access-token'
+import { UnexpectedError } from '@/domain/error'
 
 import { faker } from '@faker-js/faker'
 
@@ -31,5 +32,11 @@ describe('LocalSaveAccessToken', () => {
     jest.spyOn(setStorageMock, 'set').mockRejectedValueOnce(new Error())
     const promise = sut.save(faker.string.uuid())
     expect(promise).rejects.toThrow(new Error())
+  })
+
+  it('Should throw if accessToken is falsy', async () => {
+    const { sut } = makeSut()
+    const promise = sut.save(undefined)
+    expect(promise).rejects.toThrow(new UnexpectedError())
   })
 })
