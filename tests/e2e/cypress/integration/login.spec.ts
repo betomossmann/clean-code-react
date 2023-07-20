@@ -70,7 +70,7 @@ describe('Login', () => {
   it('Should present UnexpectedError on default error cases', () => {
     mockUnexpectedError()
     simulateValidSubmit()
-    FormHelper.testMainError('Algo errado aconteceu, tente mais tarde.')
+    FormHelper.testMainError('Algo de errado aconteceu. Tente novamente em breve.')
     Helper.testUrl('/login')
   })
 

@@ -6,6 +6,7 @@ import { faker } from '@faker-js/faker'
 
 const path = /api\/signup/
 const mockEmailInUseError = (): void => { Http.mockForbiddenError(path, 'POST') }
+const mockUnexpectedError = (): void => { Http.mockServerError(path, 'POST') }
 
 const populateFields = (): void => {
   cy.getByTestId('name').focus().type(faker.string.alphanumeric(7))
@@ -77,6 +78,13 @@ describe('SignUp', () => {
     mockEmailInUseError()
     simulateValidSubmit()
     FormHelper.testMainError('Esse e-mail já está em uso')
+    Helper.testUrl('/signup')
+  })
+
+  it('Should present UnexpectedError on default error cases', () => {
+    mockUnexpectedError()
+    simulateValidSubmit()
+    FormHelper.testMainError('Algo de errado aconteceu. Tente novamente em breve.')
     Helper.testUrl('/signup')
   })
 })
