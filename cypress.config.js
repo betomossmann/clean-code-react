@@ -7,8 +7,8 @@ module.exports = defineConfig({
     fixturesFolder: 'tests/e2e/cypress/fixtures',
     supportFile: 'tests/e2e/cypress/support/index.js',
     video: false,
-    viewportWidth: 1440,
-    viewportHeight: 900,
+    viewportWidth: 1000,
+    viewportHeight: 660,
     setupNodeEvents (on, config) {
       'tests/e2e/cypress/plugins/index.js'
     }

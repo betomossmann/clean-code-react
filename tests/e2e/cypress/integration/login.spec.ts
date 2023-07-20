@@ -8,7 +8,6 @@ const path = /api\/login/
 const mockInvalidCredentialsError = (): void => { Http.mockUnauthorizedError(path) }
 const mockUnexpectedError = (): void => { Http.mockServerError(path, 'POST') }
 const mockSuccess = (): void => {
-  // Http.mockOk(/api\/surveys/, 'GET', 'survey-list')
   Http.mockOk(path, 'POST', 'account', 'loginRequest')
 }
 
@@ -27,16 +26,10 @@ describe('Login', () => {
     cy.visit('login')
   })
   it('Should load with correct initial state', () => {
-    cy.getByTestId('email-wrap').should('have.attr', 'data-status', 'invalid')
-    cy.getByTestId('email')
-      .should('have.attr', 'title', 'Campo obrigatório')
-      .should('have.attr', 'readOnly')
-    cy.getByTestId('email-label').should('have.attr', 'title', 'Campo obrigatório')
-    cy.getByTestId('password-wrap').should('have.attr', 'data-status', 'invalid')
-    cy.getByTestId('password')
-      .should('have.attr', 'title', 'Campo obrigatório')
-      .should('have.attr', 'readOnly')
-    cy.getByTestId('password-label').should('have.attr', 'title', 'Campo obrigatório')
+    cy.getByTestId('email').should('have.attr', 'readOnly')
+    FormHelper.testInputStatus('email', 'Campo obrigatório')
+    cy.getByTestId('password').should('have.attr', 'readOnly')
+    FormHelper.testInputStatus('password', 'Campo obrigatório')
     cy.getByTestId('submit').should('have.attr', 'disabled')
     cy.getByTestId('error-wrap').should('not.have.descendants')
   })
@@ -85,7 +78,7 @@ describe('Login', () => {
     mockSuccess()
     simulateValidSubmit()
     Helper.testUrl('/')
-    cy.window().then(window => assert.isOk(window.localStorage.getItem('accessToken')))
+    Helper.testLocalStorageItem('accessToken')
   })
 
   it('Should prevent multiple submits', () => {
