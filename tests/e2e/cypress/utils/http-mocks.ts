@@ -29,7 +29,7 @@ export const mockServerError = (url: RegExp, method: string): void => {
     method,
     url
   }, {
-    statusCode: faker.helpers.shuffle([400, 404, 500]),
+    statusCode: faker.internet.httpStatusCode({ types: ['success', 'serverError', 'redirection', 'informational', 'clientError'] }),
     body: {
       error: faker.lorem.words()
     }
