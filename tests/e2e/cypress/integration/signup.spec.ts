@@ -7,6 +7,9 @@ import { faker } from '@faker-js/faker'
 const path = /api\/signup/
 const mockEmailInUseError = (): void => { Http.mockForbiddenError(path, 'POST') }
 const mockUnexpectedError = (): void => { Http.mockServerError(path, 'POST') }
+const mockSuccess = (): void => {
+  Http.mockOk(path, 'POST', 'account', 'signUpRequest')
+}
 
 const populateFields = (): void => {
   cy.getByTestId('name').focus().type(faker.string.alphanumeric(7))
@@ -86,5 +89,12 @@ describe('SignUp', () => {
     simulateValidSubmit()
     FormHelper.testMainError('Algo de errado aconteceu. Tente novamente em breve.')
     Helper.testUrl('/signup')
+  })
+
+  it('Should store account on localStorage if valid credentials are provided', () => {
+    mockSuccess()
+    simulateValidSubmit()
+    Helper.testUrl('/')
+    Helper.testLocalStorageItem('accessToken')
   })
 })
