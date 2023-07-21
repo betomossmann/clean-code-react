@@ -1,11 +1,11 @@
 import { type HttpResponse } from '@/data/protocols/http'
 
-export type HttpPostParams<T> = {
+export type HttpPostParams = {
   url: string
-  body?: T
+  body?: any
 }
 
-// Generics typescript "<T>"
-export interface HttpPostClient<T, R> {
-  post: (params: HttpPostParams<T>) => Promise<HttpResponse<R>>
+// Generics typescript "<R>"
+export interface HttpPostClient<R = any> {
+  post: (params: HttpPostParams) => Promise<HttpResponse<R>>
 }
