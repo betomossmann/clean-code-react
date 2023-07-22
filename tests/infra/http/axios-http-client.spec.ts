@@ -1,6 +1,6 @@
+import { AxiosHttpClient } from '@/infra/http/axios-http-client'
 import { mockAxios, mockHttpResponse } from '@/tests/infra/mocks'
 import { mockPostRequest } from '@/tests/data/mocks'
-import { AxiosHttpClient } from '@/infra/http/axios-http-client'
 
 import type axios from 'axios'
 
@@ -14,10 +14,7 @@ type SutTypes = {
 const makeSut = (): SutTypes => {
   const sut = new AxiosHttpClient()
   const mockedAxios = mockAxios()
-  return {
-    sut,
-    mockedAxios
-  }
+  return { sut, mockedAxios }
 }
 
 describe('AxiosHttpClient', () => {
