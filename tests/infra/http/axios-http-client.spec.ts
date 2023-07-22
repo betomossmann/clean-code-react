@@ -28,8 +28,13 @@ describe('AxiosHttpClient', () => {
 
     it('Should return the correct response on axios.post', async () => {
       const { sut, mockedAxios } = makeSut()
-      const promise = sut.post(mockPostRequest())
-      expect(promise).toEqual(mockedAxios.post.mock.results[0].value)
+      // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+      const httpResponse = await sut.post(mockPostRequest())
+      const axiosResponse = await mockedAxios.post.mock.results[0].value
+      expect(httpResponse).toEqual({
+        statusCode: axiosResponse.status,
+        body: axiosResponse.data
+      })
     })
 
     it('Should return correct error on axios.post', async () => {
