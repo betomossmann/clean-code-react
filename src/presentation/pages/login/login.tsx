@@ -1,7 +1,7 @@
 import Styles from './login-styles.scss'
 import { Footer, FormStatus, Input, LoginHeader, SubmitButton } from '@/presentation/components'
-import { Context } from '@/presentation/contexts/form'
 import { type Validation } from '@/presentation/protocols/validation'
+import { FormContext } from '@/presentation/contexts'
 import { type SaveAccessToken, type Authentication } from '@/domain/usecases'
 
 import React, { useEffect, useState } from 'react'
@@ -63,7 +63,7 @@ const Login: React.FC<Props> = ({ validation, authentication, saveAccessToken }:
     <>
       <div className={Styles.login}>
         <LoginHeader />
-        <Context.Provider value={{ state, setState }}>
+        <FormContext.Provider value={{ state, setState }}>
           <form data-testid='form' className={Styles.form} onSubmit={handleSubmit}>
             <h2>Login</h2>
             <Input type='email' name='email' placeholder='Digite seu e-mail' />
@@ -72,7 +72,7 @@ const Login: React.FC<Props> = ({ validation, authentication, saveAccessToken }:
             <Link data-testid='signup' to='/signup' className={Styles.link}>Cadastre-se</Link>
             <FormStatus />
           </form>
-        </Context.Provider>
+        </FormContext.Provider>
         <Footer />
       </div>
     </>

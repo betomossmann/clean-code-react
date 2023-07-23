@@ -1,7 +1,7 @@
 import Styles from './signup-styles.scss'
 import { Footer, FormStatus, Input, LoginHeader, SubmitButton } from '@/presentation/components'
-import { Context } from '@/presentation/contexts/form'
 import { type Validation } from '@/presentation/protocols/validation'
+import { FormContext } from '@/presentation/contexts'
 import { type SaveAccessToken, type AddAccount } from '@/domain/usecases'
 
 import React, { useEffect, useState } from 'react'
@@ -74,7 +74,7 @@ const SignUp: React.FC<Props> = ({ validation, addAccount, saveAccessToken }: Pr
     <>
       <div className={Styles.signup}>
         <LoginHeader />
-        <Context.Provider value={ { state, setState } }>
+        <FormContext.Provider value={ { state, setState } }>
           <form data-testid='form' className={Styles.form} onSubmit={handleSubmit}>
             <h2>Criar Conta</h2>
             <Input type='text' name='name' placeholder='Digite seu nome' />
@@ -85,7 +85,7 @@ const SignUp: React.FC<Props> = ({ validation, addAccount, saveAccessToken }: Pr
             <Link data-testid='login' to='/login' className={Styles.link}>Voltar para Login</Link>
             <FormStatus />
           </form>
-        </Context.Provider>
+        </FormContext.Provider>
         <Footer />
       </div>
     </>
