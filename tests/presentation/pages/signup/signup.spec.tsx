@@ -1,4 +1,4 @@
-import { Helper, ValidationStub , AddAccountSpy, SaveAccessTokenMock } from '@/tests/presentation/mocks'
+import { Helper, ValidationStub , AddAccountSpy, UpdateCurrentAccountMock } from '@/tests/presentation/mocks'
 import { SignUp } from '@/presentation/pages'
 
 import React from 'react'
@@ -11,7 +11,7 @@ import { Router } from 'react-router-dom'
 type SutTypes = {
   sut: RenderResult
   addAccountSpy: AddAccountSpy
-  saveAccessTokenMock: SaveAccessTokenMock
+  updateCurrentAccountMock: UpdateCurrentAccountMock
 }
 
 type SutParams = {
@@ -23,16 +23,16 @@ const makeSut = (params?: SutParams): SutTypes => {
   const validationStub = new ValidationStub()
   validationStub.errorMessage = params?.validationError
   const addAccountSpy = new AddAccountSpy()
-  const saveAccessTokenMock = new SaveAccessTokenMock()
+  const updateCurrentAccountMock = new UpdateCurrentAccountMock()
   const sut = render(
     <Router location={history.location} navigator={history}>
-      <SignUp validation={validationStub} addAccount={addAccountSpy} saveAccessToken={saveAccessTokenMock} />
+      <SignUp validation={validationStub} addAccount={addAccountSpy} updateCurrentAccount={updateCurrentAccountMock} />
     </Router>
   )
   return {
     sut,
     addAccountSpy,
-    saveAccessTokenMock
+    updateCurrentAccountMock
   }
 }
 
@@ -160,10 +160,10 @@ describe('SignUp Component', () => {
     Helper.testChildCount(sut, 'error-wrap', 1)
   })
 
-  it('Should call SaveAccessToken on success', async () => {
-    const { sut, addAccountSpy, saveAccessTokenMock } = makeSut()
+  it('Should call updateCurrentAccount on success', async () => {
+    const { sut, addAccountSpy, updateCurrentAccountMock } = makeSut()
     await simulateValidSubmit(sut)
-    expect(saveAccessTokenMock.accessToken).toBe(addAccountSpy.account.accessToken)
+    expect(updateCurrentAccountMock.account).toEqual(addAccountSpy.account)
     expect(history.index).toBe(0)
     expect(history.location.pathname).toBe('/')
   })

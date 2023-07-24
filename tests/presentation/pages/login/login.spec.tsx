@@ -1,4 +1,4 @@
-import { ValidationStub , AuthenticationSpy, SaveAccessTokenMock, Helper } from '@/tests/presentation/mocks'
+import { ValidationStub , AuthenticationSpy, UpdateCurrentAccountMock, Helper } from '@/tests/presentation/mocks'
 import { Login } from '@/presentation/pages'
 import { InvalidCredentialsError } from '@/domain/error'
 
@@ -11,7 +11,7 @@ import { type RenderResult, render, fireEvent, cleanup, waitFor } from '@testing
 type SutTypes = {
   sut: RenderResult
   authenticationSpy: AuthenticationSpy
-  saveAccessTokenMock: SaveAccessTokenMock
+  updateCurrentAccountMock: UpdateCurrentAccountMock
 }
 
 type SutParams = {
@@ -23,16 +23,16 @@ const makeSut = (params?: SutParams): SutTypes => {
   const validationStub = new ValidationStub()
   validationStub.errorMessage = params?.validationError
   const authenticationSpy = new AuthenticationSpy()
-  const saveAccessTokenMock = new SaveAccessTokenMock()
+  const updateCurrentAccountMock = new UpdateCurrentAccountMock()
   const sut = render(
     <Router location={history.location} navigator={history}>
-      <Login validation={validationStub} authentication={authenticationSpy} saveAccessToken={saveAccessTokenMock} />
+      <Login validation={validationStub} authentication={authenticationSpy} updateCurrentAccount={updateCurrentAccountMock} />
     </Router>
   )
   return {
     sut,
     authenticationSpy,
-    saveAccessTokenMock
+    updateCurrentAccountMock
   }
 }
 
@@ -127,10 +127,10 @@ describe('Login Component', () => {
     Helper.testChildCount(sut, 'error-wrap', 1)
   })
 
-  it('Should call SaveAccessToken on success', async () => {
-    const { sut, authenticationSpy, saveAccessTokenMock } = makeSut()
+  it('Should call updateCurrentAccount on success', async () => {
+    const { sut, authenticationSpy, updateCurrentAccountMock } = makeSut()
     await simulateValidSubmit(sut)
-    expect(saveAccessTokenMock.accessToken).toBe(authenticationSpy.account.accessToken)
+    expect(updateCurrentAccountMock.account).toEqual(authenticationSpy.account)
     expect(history.index).toBe(0)
     expect(history.location.pathname).toBe('/')
   })

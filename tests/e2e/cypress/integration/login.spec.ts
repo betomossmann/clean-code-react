@@ -78,7 +78,7 @@ describe('Login', () => {
     mockSuccess()
     simulateValidSubmit()
     Helper.testUrl('/')
-    Helper.testLocalStorageItem('accessToken')
+    Helper.testLocalStorageItem('account')
   })
 
   it('Should prevent multiple submits', () => {
