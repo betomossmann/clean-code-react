@@ -1,3 +1,4 @@
+import { type AccountModel } from '@/domain/models'
 import { LocalStorageAdapter } from '@/infra/cache'
 
 import { faker } from '@faker-js/faker'
@@ -10,11 +11,14 @@ describe('LocalStorageAdapter', () => {
     localStorage.clear()
   })
 
-  it('Should call localStorage with correct values', async () => {
+  it('Should call localStorage with correct values', () => {
     const sut = makeSut()
     const key = faker.database.column()
-    const value = faker.lorem.word()
-    await sut.set(key, value)
-    expect(localStorage.setItem).toHaveBeenCalledWith(key, value)
+    const value = faker.helpers.objectEntry<AccountModel>({
+      accessToken: '',
+      name: ''
+    })
+    sut.set(key, value)
+    expect(localStorage.setItem).toHaveBeenCalledWith(key, JSON.stringify(value))
   })
 })

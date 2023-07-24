@@ -1,19 +1,19 @@
 import Styles from './login-styles.scss'
 import { Footer, FormStatus, Input, LoginHeader, SubmitButton } from '@/presentation/components'
 import { type Validation } from '@/presentation/protocols/validation'
-import { FormContext } from '@/presentation/contexts'
-import { type UpdateCurrentAccount, type Authentication } from '@/domain/usecases'
+import { ApiContext, FormContext } from '@/presentation/contexts'
+import { type Authentication } from '@/domain/usecases'
 
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 type Props = {
   validation: Validation
   authentication: Authentication
-  updateCurrentAccount: UpdateCurrentAccount
 }
 
-const Login: React.FC<Props> = ({ validation, authentication, updateCurrentAccount }: Props) => {
+const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
+  const { setCurrentAccount } = useContext(ApiContext)
   const navigate = useNavigate()
   const [state, setState] = useState({
     isLoading: false,
@@ -48,7 +48,7 @@ const Login: React.FC<Props> = ({ validation, authentication, updateCurrentAccou
       const account = await authentication.auth({
         email: state.email, password: state.password
       })
-      await updateCurrentAccount.save(account)
+      setCurrentAccount(account)
       navigate('/', { replace: true })
     } catch (error) {
       setState({
