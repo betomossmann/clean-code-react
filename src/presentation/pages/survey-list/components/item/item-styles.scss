@@ -22,7 +22,7 @@
       linear-gradient(to right, rgba($primaryLight, 0.1), rgba($primaryLight, 0.1)),
       linear-gradient(to right, $white, $white);
     background-position: 0 0, 54 0;
-    background-size: 54px 100% 100% 100%;
+    background-size: 54px 100%, 100% 100%;
     position: relative;
 
     .iconWrap {
@@ -45,8 +45,7 @@
   }
 
   footer {
-    background-color:  $primary;
-
+    background-color: $primary;
     cursor: pointer;
     border-radius: 0px 0px 8px 8px;
 

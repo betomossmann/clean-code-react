@@ -1,6 +1,7 @@
 import Styles from './list-styles.scss'
 import { SurveyItem, SurveyItemEmpty } from '@/presentation/pages/survey-list/components'
 import { type SurveyModel } from '@/domain/models'
+
 import React from 'react'
 
 type Props = {

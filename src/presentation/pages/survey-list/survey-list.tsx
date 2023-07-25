@@ -15,18 +15,8 @@ const SurveyList: React.FC<Props> = ({ loadSurveyList }: Props) => {
   const handleError = useErrorHandler((error: Error) => {
     setState(old => ({ ...old, error: error.message }))
   })
-  const [state, setState] = useState({
-    surveys: [] as SurveyModel[],
-    error: '',
-    reload: false
-  })
-  const reload = (): void => {
-    setState(old => ({
-      surveys: [],
-      error: '',
-      reload: !old.reload
-    }))
-  }
+  const [state, setState] = useState({ surveys: [] as SurveyModel[], error: '', reload: false })
+  const reload = (): void => { setState(old => ({ surveys: [], error: '', reload: !old.reload })) }
 
   useEffect(() => {
     loadSurveyList.loadAll()
@@ -39,10 +29,10 @@ const SurveyList: React.FC<Props> = ({ loadSurveyList }: Props) => {
       <Header />
       <div className={Styles.contentWrap}>
         <h2>Enquetes</h2>
-          {state.error
-            ? <Error error={state.error} reload={reload} />
-            : <SurveyListItem surveys={state.surveys} />
-          }
+        {state.error
+          ? <Error error={state.error} reload={reload} />
+          : <SurveyListItem surveys={state.surveys} />
+        }
       </div>
       <Footer />
     </div>

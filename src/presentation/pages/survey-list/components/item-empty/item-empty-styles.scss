@@ -1,5 +1,5 @@
-@import '../../../../styles/colors.scss';
-@import '../../../../styles/animations.scss';
+@import "../../../../styles/colors.scss";
+@import "../../../../styles/animations.scss";
 
 .surveyItemEmpty {
   height: 250px;
@@ -28,10 +28,10 @@
     108px 117px;
   background-size:
     60px 100px,
-    60px 100px,
-    160px 16px,
+    100% 40px,
     140px 16px,
-    180px 16px;
+    120px 16px,
+    160px 16px;
 
   &::after {
     content: '';
@@ -41,7 +41,7 @@
     top: 0;
     left: 0;
     transform: translateX(-100%);
-    background-image: linear-gradient(to right, transparent, rgba($white, 0.3), transparent);
+    background-image: linear-gradient(to right, transparent, rgba($white, 0.2), transparent);
     animation: shimmer 1.2s infinite;
   }
 }
