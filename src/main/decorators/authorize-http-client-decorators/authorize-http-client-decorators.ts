@@ -1,11 +1,10 @@
 import { type GetStorage } from '@/data/protocols/cache'
 import { type HttpGetClient, type HttpGetParams, type HttpResponse } from '@/data/protocols/http'
-import { type HttpGetClientSpy } from '@/tests/data/mocks'
 
 export class AuthorizeHttpClientDecorator implements HttpGetClient {
   constructor (
     private readonly getStorage: GetStorage,
-    private readonly httpGetClientSpy: HttpGetClientSpy
+    private readonly httpGetClient: HttpGetClient
   ) {}
 
   async get (params: HttpGetParams): Promise<HttpResponse> {
@@ -17,7 +16,7 @@ export class AuthorizeHttpClientDecorator implements HttpGetClient {
         })
       })
     }
-    await this.httpGetClientSpy.get(params)
-    return null
+    const httpResponse = await this.httpGetClient.get(params)
+    return httpResponse
   }
 }
