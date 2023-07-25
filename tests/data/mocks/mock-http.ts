@@ -4,12 +4,12 @@ import { faker } from '@faker-js/faker'
 
 export const mockPostRequest = (): HttpPostParams => ({
   url: faker.internet.url(),
-  body: faker.helpers.objectValue({ new: 'any_value' })
+  body: faker.helpers.objectKey({ new: 'value' })
 })
 
 export const mockGetRequest = (): HttpGetParams => ({
   url: faker.internet.url(),
-  headers: faker.helpers.objectValue({ new: 'any_value' })
+  headers: faker.helpers.objectKey({ new: 'value' })
 })
 
 export class HttpPostClientSpy<R = any> implements HttpPostClient<R> {

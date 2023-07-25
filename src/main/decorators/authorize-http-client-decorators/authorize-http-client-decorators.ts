@@ -1,6 +1,6 @@
 import { type GetStorage } from '@/data/protocols/cache'
 import { type HttpGetClient, type HttpGetParams, type HttpResponse } from '@/data/protocols/http'
-import { type HttpGetClientSpy } from '../../../data/mocks'
+import { type HttpGetClientSpy } from '@/tests/data/mocks'
 
 export class AuthorizeHttpClientDecorator implements HttpGetClient {
   constructor (
@@ -9,7 +9,14 @@ export class AuthorizeHttpClientDecorator implements HttpGetClient {
   ) {}
 
   async get (params: HttpGetParams): Promise<HttpResponse> {
-    this.getStorage.get('account')
+    const account = this.getStorage.get('account')
+    if (account?.accessToken) {
+      Object.assign(params, {
+        headers: {
+          'x-access-token': account.accessToken
+        }
+      })
+    }
     await this.httpGetClientSpy.get(params)
     return null
   }
