@@ -1,11 +1,4 @@
-import {
-  type HttpPostParams,
-  type HttpPostClient,
-  type HttpResponse,
-  HttpStatusCode,
-  type HttpGetClient,
-  type HttpGetParams
-} from '@/data/protocols/http'
+import { type HttpPostParams, type HttpPostClient, type HttpResponse, HttpStatusCode, type HttpGetClient, type HttpGetParams } from '@/data/protocols/http'
 
 import { faker } from '@faker-js/faker'
 

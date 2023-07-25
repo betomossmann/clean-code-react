@@ -3,9 +3,9 @@ import { mockSurveyListModel } from '@/tests/domain/mocks'
 import { HttpStatusCode } from '@/data/protocols/http'
 import { RemoteLoadSurveyList } from '@/data/usecases/load-survey-list'
 import { AccessDeniedError, UnexpectedError } from '@/domain/error'
+import { type SurveyModel } from '@/domain/models'
 
 import { faker } from '@faker-js/faker'
-import { type SurveyModel } from '@/domain/models'
 
 type SutTypes = {
   sut: RemoteLoadSurveyList

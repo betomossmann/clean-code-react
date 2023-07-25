@@ -1,7 +1,7 @@
 import { mockAccountModel } from '@/tests/domain/mocks'
-import { type AccountModel } from '@/domain/models'
 import { ApiContext } from '@/presentation/contexts'
 import { Header } from '@/presentation/components'
+import { type AccountModel } from '@/domain/models'
 
 import React from 'react'
 import { Router } from 'react-router-dom'

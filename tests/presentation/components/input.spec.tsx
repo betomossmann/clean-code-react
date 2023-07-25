@@ -1,5 +1,5 @@
 import { Input } from '@/presentation/components'
-import FormContext from '@/presentation/contexts/form/form-context'
+import { FormContext } from '@/presentation/contexts'
 
 import React from 'react'
 import { fireEvent, render, type RenderResult } from '@testing-library/react'
