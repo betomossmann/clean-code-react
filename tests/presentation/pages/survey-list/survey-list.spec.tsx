@@ -6,7 +6,7 @@ import { LoadSurveyListSpy, mockAccountModel } from '@/tests/domain/mocks'
 
 import React from 'react'
 import { Router } from 'react-router-dom'
-import { render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { type MemoryHistory, createMemoryHistory } from 'history'
 
 type SutTypes = {
@@ -63,5 +63,17 @@ describe('SurveyList Components', () => {
     await waitFor(() => screen.getByRole('heading'))
     expect(screen.queryByTestId('survey-list')).not.toBeInTheDocument()
     expect(screen.queryByTestId('error')).toHaveTextContent(error.message)
+  })
+
+  it('Should call LoadSurveyList on reload', async () => {
+    const loadSurveyListSpy = new LoadSurveyListSpy()
+    jest.spyOn(loadSurveyListSpy, 'loadAll').mockRejectedValueOnce(new UnexpectedError())
+    makeSut(loadSurveyListSpy)
+    await waitFor(() => screen.getByRole('heading'))
+
+    fireEvent.click(await screen.findByTestId('reload'))
+
+    expect(loadSurveyListSpy.callsCount).toBe(1)
+    await waitFor(() => screen.getByRole('heading'))
   })
 })
