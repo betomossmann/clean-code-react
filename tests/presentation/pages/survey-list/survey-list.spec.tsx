@@ -1,5 +1,6 @@
 import { SurveyList } from '@/presentation/pages'
 import { ApiContext } from '@/presentation/contexts'
+import { UnexpectedError } from '@/domain/error'
 import { type AccountModel } from '@/domain/models'
 import { LoadSurveyListSpy, mockAccountModel } from '@/tests/domain/mocks'
 
@@ -52,5 +53,15 @@ describe('SurveyList Components', () => {
     await waitFor(() => surveyList)
     expect(surveyList.querySelectorAll('li.surveyItemWrap')).toHaveLength(3)
     expect(screen.queryByTestId('error')).not.toBeInTheDocument()
+  })
+
+  it('Should render error on UnexpectedError', async () => {
+    const loadSurveyListSpy = new LoadSurveyListSpy()
+    const error = new UnexpectedError()
+    jest.spyOn(loadSurveyListSpy, 'loadAll').mockRejectedValueOnce(error)
+    makeSut(loadSurveyListSpy)
+    await waitFor(() => screen.getByRole('heading'))
+    expect(screen.queryByTestId('survey-list')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('error')).toHaveTextContent(error.message)
   })
 })
