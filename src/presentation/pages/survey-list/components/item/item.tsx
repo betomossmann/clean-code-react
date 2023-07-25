@@ -1,12 +1,12 @@
 import Styles from './item-styles.scss'
 import { Calendar, Icon, IconName } from '@/presentation/components'
-import { type SurveyModel } from '@/domain/models'
+import { type LoadSurveyList } from '@/domain/usecases'
 
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 type Props = {
-  survey: SurveyModel
+  survey: LoadSurveyList.Model
 }
 
 const SurveyItem: React.FC<Props> = ({ survey }: Props) => {

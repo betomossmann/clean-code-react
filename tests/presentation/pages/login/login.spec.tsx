@@ -1,7 +1,8 @@
-import { ValidationStub , AuthenticationSpy, Helper } from '@/tests/presentation/mocks'
+import { ValidationStub , Helper } from '@/tests/presentation/mocks'
+import { AuthenticationSpy } from '@/tests/domain/mocks'
 import { ApiContext } from '@/presentation/contexts'
 import { Login } from '@/presentation/pages'
-import { type AccountModel } from '@/domain/models'
+import { type Authentication } from '@/domain/usecases'
 
 import * as React from 'react'
 import { Router } from 'react-router-dom'
@@ -11,7 +12,7 @@ import { render, fireEvent, waitFor, screen } from '@testing-library/react'
 
 type SutTypes = {
   authenticationSpy: AuthenticationSpy
-  setCurrentAccountMock: (account: AccountModel) => void
+  setCurrentAccountMock: (account: Authentication.Model) => void
 }
 
 type SutParams = {

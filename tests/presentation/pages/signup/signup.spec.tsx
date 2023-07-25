@@ -1,7 +1,8 @@
-import { Helper, ValidationStub , AddAccountSpy } from '@/tests/presentation/mocks'
+import { Helper, ValidationStub } from '@/tests/presentation/mocks'
 import { SignUp } from '@/presentation/pages'
 import { ApiContext } from '@/presentation/contexts'
-import { type AccountModel } from '@/domain/models'
+import { AddAccountSpy } from '@/tests/domain/mocks'
+import { type AddAccount } from '@/domain/usecases'
 import { EmailInUseError } from '@/domain/error'
 
 import React from 'react'
@@ -12,7 +13,7 @@ import { Router } from 'react-router-dom'
 
 type SutTypes = {
   addAccountSpy: AddAccountSpy
-  setCurrentAccountMock: (account: AccountModel) => void
+  setCurrentAccountMock: (account: AddAccount.Model) => void
 }
 
 type SutParams = {
