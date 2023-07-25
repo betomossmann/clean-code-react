@@ -68,6 +68,9 @@ devDependencies:
   coveralls:
     specifier: ^3.1.1
     version: 3.1.1
+  cross-env:
+    specifier: ^7.0.3
+    version: 7.0.3
   css-loader:
     specifier: ^6.8.1
     version: 6.8.1(webpack@5.88.2)
@@ -95,6 +98,9 @@ devDependencies:
   eslint-plugin-react:
     specifier: ^7.33.0
     version: 7.33.0(eslint@8.45.0)
+  full-icu:
+    specifier: ^1.5.0
+    version: 1.5.0
   history:
     specifier: ^5.3.0
     version: 5.3.0
@@ -3596,6 +3602,14 @@ packages:
       request: 2.88.2
     dev: true
 
+  /cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
+
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -4808,6 +4822,14 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /full-icu@1.5.0:
+    resolution: {integrity: sha512-BxB2otKUSFyvENjbI8EtQscpiPOEnhrf5V4MVpa6PjzsrLmdKKUUhulbydsfKS4ve6cGXNVRLlrOjizby/ZfDA==}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      yauzl: 2.10.0
+    dev: true
 
   /function-bind@1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}

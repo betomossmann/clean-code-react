@@ -45,4 +45,12 @@ describe('SurveyList Components', () => {
     expect(loadSurveyListSpy.callsCount).toBe(1)
     await waitFor(() => screen.getByRole('heading'))
   })
+
+  it('Should render SurveyItems on success', async () => {
+    makeSut()
+    const surveyList = screen.getByTestId('survey-list')
+    await waitFor(() => surveyList)
+    expect(surveyList.querySelectorAll('li.surveyItemWrap')).toHaveLength(3)
+    expect(screen.queryByTestId('error')).not.toBeInTheDocument()
+  })
 })
