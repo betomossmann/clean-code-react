@@ -28,7 +28,6 @@ describe('AxiosHttpClient', () => {
 
     it('Should return the correct response on axios.post', async () => {
       const { sut, mockedAxios } = makeSut()
-      // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
       const httpResponse = await sut.post(mockPostRequest())
       const axiosResponse = await mockedAxios.post.mock.results[0].value
       expect(httpResponse).toEqual({
@@ -52,12 +51,11 @@ describe('AxiosHttpClient', () => {
       const request = mockGetRequest()
       const { sut, mockedAxios } = makeSut()
       await sut.get(request)
-      expect(mockedAxios.get).toHaveBeenCalledWith(request.url)
+      expect(mockedAxios.get).toHaveBeenCalledWith(request.url, { headers: request.headers })
     })
 
     it('Should return correct response on axios.get', async () => {
       const { sut, mockedAxios } = makeSut()
-      // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
       const httpResponse = await sut.get(mockGetRequest())
       const axiosResponse = await mockedAxios.get.mock.results[0].value
       expect(httpResponse).toEqual({
