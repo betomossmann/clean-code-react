@@ -39,4 +39,10 @@ describe('SurveyList Components', () => {
     expect(screen.queryByTestId('error')).not.toBeInTheDocument()
     await waitFor(() => surveyList)
   })
+
+  it('Should call LoadSurveyList', async () => {
+    const { loadSurveyListSpy } = makeSut()
+    expect(loadSurveyListSpy.callsCount).toBe(1)
+    await waitFor(() => screen.getByRole('heading'))
+  })
 })
