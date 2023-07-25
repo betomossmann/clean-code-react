@@ -1,7 +1,7 @@
 import { HttpGetClientSpy } from '@/tests/data/mocks'
 import { mockSurveyListModel } from '@/tests/domain/mocks'
 import { HttpStatusCode } from '@/data/protocols/http'
-import { RemoteLoadSurveyList } from '@/data/usecases/load-survey-list'
+import { RemoteLoadSurveyList } from '@/data/usecases'
 import { AccessDeniedError, UnexpectedError } from '@/domain/error'
 import { type SurveyModel } from '@/domain/models'
 

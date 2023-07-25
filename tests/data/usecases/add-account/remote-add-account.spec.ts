@@ -1,6 +1,6 @@
 import { HttpPostClientSpy } from '@/tests/data/mocks'
 import { mockAccountModel, mockAddAccountParams } from '@/tests/domain/mocks'
-import { RemoteAddAccount } from '@/data/usecases/add-account'
+import { RemoteAddAccount } from '@/data/usecases'
 import { HttpStatusCode } from '@/data/protocols/http'
 import { EmailInUseError, UnexpectedError } from '@/domain/error'
 import { type AccountModel } from '@/domain/models'
