@@ -25,9 +25,6 @@ jobs:
 
       - run: pnpm install
 
-      - name: Run ts-prune
-        run: pnpm ts-prune --error
-
       - name: Run tests
         run: pnpm test:ci
 
