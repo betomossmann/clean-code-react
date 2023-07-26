@@ -37,6 +37,6 @@ describe('Header Component', () => {
   it('Should render username correctly', () => {
     const account = mockAccountModel()
     makeSut(account)
-    expect(screen.getByTestId('username').textContent).toBe(account.name)
+    expect(screen.getByTestId('username')).toHaveTextContent(account.name)
   })
 })
