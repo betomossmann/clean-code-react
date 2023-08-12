@@ -5,3 +5,10 @@ public
 dist
 *.scss
 *.json
+webpack.prod.js
+webpack.dev.js
+webpack.common.js
+index.js
+jest.config.js
+cypress.config.js
+cy-ts-preprocessor.js

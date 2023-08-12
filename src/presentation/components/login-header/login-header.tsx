@@ -1,9 +1,9 @@
 import Styles from './login-header-styles.scss'
 import { Logo } from '@/presentation/components'
 
-import React, { memo } from 'react'
+import React, { type FC, memo } from 'react'
 
-const LoginHeader: React.FC = () => {
+const LoginHeader: FC = () => {
   return (
     <header className={Styles.header}>
       <Logo />

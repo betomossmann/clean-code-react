@@ -1,10 +1,11 @@
-import { PrivateRoute } from '@/presentation/components'
-import { ApiContext } from '@/presentation/contexts'
+import { PrivateRoute, currentAccountState } from '@/presentation/components'
 import { mockAccountModel } from '@/tests/domain/mocks'
+import { MakeSurveyList } from '@/main/factories/pages'
 
 import React from 'react'
 import { render } from '@testing-library/react'
-import { Router } from 'react-router-dom'
+import { Route, Router, Routes } from 'react-router-dom'
+import { RecoilRoot } from 'recoil'
 import { type MemoryHistory, createMemoryHistory } from 'history'
 
 type SutTypes = {
@@ -13,12 +14,18 @@ type SutTypes = {
 
 const makeSut = (account = mockAccountModel()): SutTypes => {
   const history = createMemoryHistory({ initialEntries: ['/'] })
+  const setCurrentAccountMock = jest.fn()
+  const mockedState = { setCurrentAccount: setCurrentAccountMock, getCurrentAccount: () => account }
   render(
-    <ApiContext.Provider value={{ getCurrentAccount: () => account }}>
+    <RecoilRoot initializeState={({ set }) => { set(currentAccountState, mockedState) }}>
       <Router location={history.location} navigator={history}>
-        <PrivateRoute />
+          <Routes>
+            <Route path='/' element={<PrivateRoute />}>
+              <Route path='/' element={<MakeSurveyList />} />
+            </Route>
+          </Routes>
       </Router>
-    </ApiContext.Provider>
+    </RecoilRoot>
   )
   return { history }
 }

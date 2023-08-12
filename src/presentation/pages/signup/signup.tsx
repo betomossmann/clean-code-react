@@ -1,34 +1,25 @@
 import Styles from './signup-styles.scss'
-import { Footer, FormStatus, Input, LoginHeader, SubmitButton } from '@/presentation/components'
+import { signUpState, Input, SubmitButton, FormStatus } from './components'
+import { Footer, LoginHeader, currentAccountState } from '@/presentation/components'
 import { type Validation } from '@/presentation/protocols/validation'
-import { ApiContext, FormContext } from '@/presentation/contexts'
 import { type AddAccount } from '@/domain/usecases'
 
-import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate , Link } from 'react-router-dom'
+import React, { type FC, useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 
 type Props = {
   validation: Validation
   addAccount: AddAccount
 }
 
-const SignUp: React.FC<Props> = ({ validation, addAccount }: Props) => {
-  const { setCurrentAccount } = useContext(ApiContext)
+const SignUp: FC<Props> = ({ validation, addAccount }: Props) => {
+  const resetSignUpState = useResetRecoilState(signUpState)
+  const { setCurrentAccount } = useRecoilValue(currentAccountState)
   const navigate = useNavigate()
-  const [state, setState] = useState({
-    isLoading: false,
-    isFormInvalid: true,
-    name: '',
-    nameError: '',
-    email: '',
-    emailError: '',
-    password: '',
-    passwordError: '',
-    passwordConfirmation: '',
-    passwordConfirmationError: '',
-    mainError: ''
-  })
+  const [state, setState] = useRecoilState(signUpState)
 
+  useEffect(() => { resetSignUpState() }, [])
   useEffect(() => { validate('name') }, [state.name])
   useEffect(() => { validate('email') }, [state.email])
   useEffect(() => { validate('password') }, [state.password])
@@ -69,18 +60,16 @@ const SignUp: React.FC<Props> = ({ validation, addAccount }: Props) => {
     <>
       <div className={Styles.signup}>
         <LoginHeader />
-        <FormContext.Provider value={ { state, setState } }>
-          <form data-testid='form' className={Styles.form} onSubmit={handleSubmit}>
-            <h2>Criar Conta</h2>
-            <Input type='text' name='name' placeholder='Digite seu nome' />
-            <Input type='email' name='email' placeholder='Digite seu e-mail' />
-            <Input type='password' name='password' placeholder='Digite sua senha' />
-            <Input type='password' name='passwordConfirmation' placeholder='Repita sua senha' />
-            <SubmitButton text='Cadastrar' />
-            <Link data-testid='login' to='/login' className={Styles.link}>Voltar para Login</Link>
-            <FormStatus />
-          </form>
-        </FormContext.Provider>
+        <form data-testid='form' className={Styles.form} onSubmit={handleSubmit}>
+          <h2>Criar Conta</h2>
+          <Input type='text' name='name' placeholder='Digite seu nome' />
+          <Input type='email' name='email' placeholder='Digite seu e-mail' />
+          <Input type='password' name='password' placeholder='Digite sua senha' />
+          <Input type='password' name='passwordConfirmation' placeholder='Repita sua senha' />
+          <SubmitButton text='Cadastrar' />
+          <Link data-testid='login' to='/login' className={Styles.link}>Voltar para Login</Link>
+          <FormStatus />
+        </form>
         <Footer />
       </div>
     </>

@@ -1,10 +1,16 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 
-.spinnerWrap {
+.spinner {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 13px;
+
+  &.negative {
+    div {
+      background: $white;
+    }
+  }
 
   div {
     position: absolute;
@@ -17,48 +23,51 @@
 
     &:nth-child(1) {
       left: 8px;
-      animation: spinnerWrap1 0.6s infinite;
+      animation: spinner1 0.6s infinite;
     }
 
     &:nth-child(2) {
       left: 8px;
-      animation: spinnerWrap2 0.6s infinite;
+      animation: spinner2 0.6s infinite;
     }
 
     &:nth-child(3) {
       left: 32px;
-      animation: spinnerWrap2 0.6s infinite;
+      animation: spinner2 0.6s infinite;
     }
 
     &:nth-child(4) {
       left: 56px;
-      animation: spinnerWrap3 0.6s infinite;
+      animation: spinner3 0.6s infinite;
     }
   }
 }
 
-@keyframes spinnerWrap1 {
+@keyframes spinner1 {
   0% {
     transform: scale(0);
   }
+
   100% {
     transform: scale(1);
   }
 }
 
-@keyframes spinnerWrap3 {
+@keyframes spinner3 {
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(0);
   }
 }
 
-@keyframes spinnerWrap2 {
+@keyframes spinner2 {
   0% {
     transform: translate(0, 0);
   }
+
   100% {
     transform: translate(24px, 0);
   }

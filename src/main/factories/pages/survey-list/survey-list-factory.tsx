@@ -3,7 +3,7 @@ import { makeRemoteLoadSurveyList } from '@/main/factories/usecases'
 
 import React from 'react'
 
-export const makeSurveyList: React.FC = () => {
+export const MakeSurveyList: React.FC = () => {
   return (
     <SurveyList loadSurveyList={makeRemoteLoadSurveyList()} />
   )

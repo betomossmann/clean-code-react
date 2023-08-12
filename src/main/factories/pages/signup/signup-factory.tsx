@@ -4,7 +4,7 @@ import { SignUp } from '@/presentation/pages'
 
 import React from 'react'
 
-export const makeSignUp: React.FC = () => {
+export const MakeSignUp: React.FC = () => {
   return (
     <SignUp
       addAccount={makeRemoteAddAccount()}

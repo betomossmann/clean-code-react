@@ -2,34 +2,50 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "typescript": {}
     }
   },
   "extends": [
-    "standard-with-typescript",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:cypress/recommended"
   ],
   "env": {
+    "browser": true,
+    "es2021": true,
     "cypress/globals": true
   },
-  "plugins": ["react", "cypress"],
+  "plugins": ["react", "cypress", "@typescript-eslint", "react-hooks"],
   "parserOptions": {
     "project": "./tsconfig-eslint.json"
   },
   "rules": {
-    "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/no-misused-promises": "off",
-    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/comma-spacing": "off",
     "@typescript-eslint/return-await": "off",
+    "cypress/unsafe-to-chain-command": "off",
     "@typescript-eslint/no-namespace": "off",
-    "no-redeclare": "off",
-    "import/export": "off",
+    "@typescript-eslint/camelcase": "off",
+    "space-before-function-paren": "off",
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "import/export": "off",
+    "no-redeclare": "off",
+    "semi": "off",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ]
   }
 }

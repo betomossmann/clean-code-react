@@ -4,7 +4,7 @@ import { Login } from '@/presentation/pages'
 
 import React from 'react'
 
-export const makeLogin: React.FC = () => {
+export const MakeLogin: React.FC = () => {
   return (
     <Login
       authentication={makeRemoteAuthentication()}

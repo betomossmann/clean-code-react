@@ -1,8 +1,8 @@
 import Styles from './footer-styles.scss'
 
-import React, { memo } from 'react'
+import React, { type FC, memo } from 'react'
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   return <footer className={Styles.footer} />
 }
 
