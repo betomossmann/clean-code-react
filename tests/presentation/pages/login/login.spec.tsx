@@ -28,7 +28,11 @@ const makeSut = (params?: SutParams): SutTypes => {
   const setCurrentAccountMock = jest.fn()
   const mockedState = { setCurrentAccount: setCurrentAccountMock, getCurrentAccount: () => mockAccountModel() }
   render(
-    <RecoilRoot initializeState={({ set }) => { set(currentAccountState, mockedState) }}>
+    <RecoilRoot
+      initializeState={({ set }) => {
+        set(currentAccountState, mockedState)
+      }}
+    >
       <Router location={history.location} navigator={history}>
         <Login validation={validationStub} authentication={authenticationSpy} />
       </Router>
@@ -40,7 +44,10 @@ const makeSut = (params?: SutParams): SutTypes => {
   }
 }
 
-const simulateValidSubmit = async (email = faker.internet.email(), password = faker.internet.password()): Promise<void> => {
+const simulateValidSubmit = async (
+  email = faker.internet.email(),
+  password = faker.internet.password()
+): Promise<void> => {
   Helper.populateField('email', email)
   Helper.populateField('password', password)
   const form = screen.getByTestId('form')

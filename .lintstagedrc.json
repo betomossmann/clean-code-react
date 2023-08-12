@@ -1,6 +1,3 @@
 {
-  "*.{ts,tsx}": [
-    "pnpm lint:fix",
-    "pnpm test:staged"
-  ]
+  "*.{ts,tsx}": ["pnpm lint:fix", "pnpm test:staged"]
 }

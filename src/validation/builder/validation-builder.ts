@@ -5,36 +5,36 @@ import { MinLengthValidation } from '@/validation/min-length'
 import { CompareFieldsValidation } from '@/validation/compare-fields/'
 
 export class ValidationBuilder {
-  constructor (
+  constructor(
     private readonly fieldName: string,
     private readonly validations: FieldValidation[]
   ) {}
 
-  static field (fieldName: string): ValidationBuilder {
+  static field(fieldName: string): ValidationBuilder {
     return new ValidationBuilder(fieldName, [])
   }
 
-  required (): ValidationBuilder {
+  required(): ValidationBuilder {
     this.validations.push(new RequiredFieldValidation(this.fieldName))
     return this
   }
 
-  email (): ValidationBuilder {
+  email(): ValidationBuilder {
     this.validations.push(new EmailValidation(this.fieldName))
     return this
   }
 
-  min (length: number): ValidationBuilder {
+  min(length: number): ValidationBuilder {
     this.validations.push(new MinLengthValidation(this.fieldName, length))
     return this
   }
 
-  sameAs (fieldToCompare: string): ValidationBuilder {
+  sameAs(fieldToCompare: string): ValidationBuilder {
     this.validations.push(new CompareFieldsValidation(this.fieldName, fieldToCompare))
     return this
   }
 
-  build (): FieldValidation[] {
+  build(): FieldValidation[] {
     return this.validations
   }
 }

@@ -9,8 +9,8 @@ export const mockRemoteSurveyModel = (): RemoteLoadSurveyList.Model => ({
   date: faker.date.recent().toISOString()
 })
 
-export const mockRemoteSurveyListModel = (): RemoteLoadSurveyList.Model[] => ([
+export const mockRemoteSurveyListModel = (): RemoteLoadSurveyList.Model[] => [
   mockRemoteSurveyModel(),
   mockRemoteSurveyModel(),
   mockRemoteSurveyModel()
-])
+]

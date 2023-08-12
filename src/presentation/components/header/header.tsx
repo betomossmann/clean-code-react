@@ -18,7 +18,9 @@ const Header: FC = () => {
         <Logo />
         <div className={Styles.logoutWrap}>
           <span data-testid="username">{getCurrentAccount().name}</span>
-          <a data-testid="logout" href="#" onClick={buttonClick}>Sair</a>
+          <a data-testid="logout" href="#" onClick={buttonClick}>
+            Sair
+          </a>
         </div>
       </div>
     </header>

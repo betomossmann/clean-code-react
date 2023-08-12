@@ -14,15 +14,22 @@ type Props = {
 const SurveyList: FC<Props> = ({ loadSurveyList }: Props) => {
   const resetSurveyListState = useResetRecoilState(surveyListState)
   const handleError = useErrorHandler((error: Error) => {
-    setState(old => ({ ...old, error: error.message }))
+    setState((old) => ({ ...old, error: error.message }))
   })
   const [state, setState] = useRecoilState(surveyListState)
-  const reload = (): void => { setState(old => ({ surveys: [], error: '', reload: !old.reload })) }
+  const reload = (): void => {
+    setState((old) => ({ surveys: [], error: '', reload: !old.reload }))
+  }
 
-  useEffect(() => { resetSurveyListState() }, [])
   useEffect(() => {
-    loadSurveyList.loadAll()
-      .then(surveys => { setState(old => ({ ...old, surveys })) })
+    resetSurveyListState()
+  }, [])
+  useEffect(() => {
+    loadSurveyList
+      .loadAll()
+      .then((surveys) => {
+        setState((old) => ({ ...old, surveys }))
+      })
       .catch(handleError)
   }, [state.reload])
 
@@ -31,10 +38,7 @@ const SurveyList: FC<Props> = ({ loadSurveyList }: Props) => {
       <Header />
       <div className={Styles.contentWrap}>
         <h2>Enquetes</h2>
-        {state.error
-          ? <Error error={state.error} reload={reload} />
-          : <SurveyListItem surveys={state.surveys} />
-        }
+        {state.error ? <Error error={state.error} reload={reload} /> : <SurveyListItem surveys={state.surveys} />}
       </div>
       <Footer />
     </div>

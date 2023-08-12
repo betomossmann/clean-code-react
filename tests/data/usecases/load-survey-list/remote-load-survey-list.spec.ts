@@ -59,22 +59,26 @@ describe('LoadSurveyList', () => {
       body: httpResult
     }
     const surveyList = await sut.loadAll()
-    expect(surveyList).toEqual([{
-      id: httpResult[0].id,
-      question: httpResult[0].question,
-      didAnswer: httpResult[0].didAnswer,
-      date: new Date(httpResult[0].date)
-    }, {
-      id: httpResult[1].id,
-      question: httpResult[1].question,
-      didAnswer: httpResult[1].didAnswer,
-      date: new Date(httpResult[1].date)
-    }, {
-      id: httpResult[2].id,
-      question: httpResult[2].question,
-      didAnswer: httpResult[2].didAnswer,
-      date: new Date(httpResult[2].date)
-    }])
+    expect(surveyList).toEqual([
+      {
+        id: httpResult[0].id,
+        question: httpResult[0].question,
+        didAnswer: httpResult[0].didAnswer,
+        date: new Date(httpResult[0].date)
+      },
+      {
+        id: httpResult[1].id,
+        question: httpResult[1].question,
+        didAnswer: httpResult[1].didAnswer,
+        date: new Date(httpResult[1].date)
+      },
+      {
+        id: httpResult[2].id,
+        question: httpResult[2].question,
+        didAnswer: httpResult[2].didAnswer,
+        date: new Date(httpResult[2].date)
+      }
+    ])
   })
 
   it('Should return an empty list if HttpGetClient returns 204', async () => {

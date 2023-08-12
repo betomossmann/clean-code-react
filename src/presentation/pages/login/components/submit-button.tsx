@@ -10,9 +10,7 @@ type Props = {
 
 const SubmitButton: React.FC<Props> = ({ text }: Props) => {
   const state = useRecoilValue(loginState)
-  return (
-    <SubmitButtonBase text={text} state={state} />
-  )
+  return <SubmitButtonBase text={text} state={state} />
 }
 
 export default SubmitButton

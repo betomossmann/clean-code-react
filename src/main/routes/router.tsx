@@ -12,7 +12,11 @@ const Router: React.FC = () => {
     getCurrentAccount: getCurrentAccountAdapter
   }
   return (
-    <RecoilRoot initializeState={({ set }) => { set(currentAccountState, state) }}>
+    <RecoilRoot
+      initializeState={({ set }) => {
+        set(currentAccountState, state)
+      }}
+    >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<PrivateRoute />}>

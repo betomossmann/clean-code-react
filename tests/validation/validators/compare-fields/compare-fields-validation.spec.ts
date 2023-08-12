@@ -3,7 +3,8 @@ import { InvalidFieldError } from '@/validation/errors'
 
 import { faker } from '@faker-js/faker'
 
-const makeSut = (field: string, fieldToCompare: string): CompareFieldsValidation => new CompareFieldsValidation(field, fieldToCompare)
+const makeSut = (field: string, fieldToCompare: string): CompareFieldsValidation =>
+  new CompareFieldsValidation(field, fieldToCompare)
 
 describe('CompareFieldsValidation', () => {
   it('Should return error if compare is invalid', () => {

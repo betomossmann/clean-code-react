@@ -19,15 +19,21 @@ const Login: FC<Props> = ({ validation, authentication }: Props) => {
   const navigate = useNavigate()
   const [state, setState] = useRecoilState(loginState)
 
-  useEffect(() => { resetLoginState() }, [])
-  useEffect(() => { validate('email') }, [state.email])
-  useEffect(() => { validate('password') }, [state.password])
+  useEffect(() => {
+    resetLoginState()
+  }, [])
+  useEffect(() => {
+    validate('email')
+  }, [state.email])
+  useEffect(() => {
+    validate('password')
+  }, [state.password])
 
   const validate = (field: string): void => {
     const { email, password } = state
     const formData = { email, password }
-    setState(old => ({ ...old, [`${field}Error`]: validation.validate(field, formData) }))
-    setState(old => ({ ...old, isFormInvalid: !!old.emailError || !!old.passwordError }))
+    setState((old) => ({ ...old, [`${field}Error`]: validation.validate(field, formData) }))
+    setState((old) => ({ ...old, isFormInvalid: !!old.emailError || !!old.passwordError }))
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -56,12 +62,14 @@ const Login: FC<Props> = ({ validation, authentication }: Props) => {
     <>
       <div className={Styles.login}>
         <LoginHeader />
-        <form data-testid='form' className={Styles.form} onSubmit={handleSubmit}>
+        <form data-testid="form" className={Styles.form} onSubmit={handleSubmit}>
           <h2>Login</h2>
-          <Input type='email' name='email' placeholder='Digite seu e-mail' />
-          <Input type='password' name='password' placeholder='Digite sua senha' />
-          <SubmitButton text='Entrar' />
-          <Link data-testid='signup' to='/signup' className={Styles.link}>Cadastre-se</Link>
+          <Input type="email" name="email" placeholder="Digite seu e-mail" />
+          <Input type="password" name="password" placeholder="Digite sua senha" />
+          <SubmitButton text="Entrar" />
+          <Link data-testid="signup" to="/signup" className={Styles.link}>
+            Cadastre-se
+          </Link>
           <FormStatus />
         </form>
         <Footer />

@@ -5,7 +5,7 @@ export const testStatusForField = (fieldName: string, validationError: string = 
   const wrap = screen.getByTestId(`${fieldName}-wrap`)
   const field = screen.getByTestId(fieldName)
   const label = screen.getByTestId(`${fieldName}-label`)
-  expect(wrap).toHaveAttribute('data-status',validationError ? 'invalid' : 'valid')
+  expect(wrap).toHaveAttribute('data-status', validationError ? 'invalid' : 'valid')
   expect(field).toHaveProperty('title', validationError)
   expect(label).toHaveProperty('title', validationError)
 }

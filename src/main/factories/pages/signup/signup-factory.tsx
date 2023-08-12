@@ -5,10 +5,5 @@ import { SignUp } from '@/presentation/pages'
 import React from 'react'
 
 export const MakeSignUp: React.FC = () => {
-  return (
-    <SignUp
-      addAccount={makeRemoteAddAccount()}
-      validation={makeSignUpValidation()}
-    />
-  )
+  return <SignUp addAccount={makeRemoteAddAccount()} validation={makeSignUpValidation()} />
 }

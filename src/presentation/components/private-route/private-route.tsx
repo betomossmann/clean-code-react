@@ -6,9 +6,7 @@ import { useRecoilValue } from 'recoil'
 
 const PrivateRoute: React.FC<RouteProps> = () => {
   const { getCurrentAccount } = useRecoilValue(currentAccountState)
-  return getCurrentAccount()?.accessToken
-    ? <Outlet />
-    : <Navigate to='/login' replace={true} />
+  return getCurrentAccount()?.accessToken ? <Outlet /> : <Navigate to="/login" replace={true} />
 }
 
 export default PrivateRoute

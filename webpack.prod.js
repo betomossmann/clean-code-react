@@ -1,53 +1,56 @@
-const { DefinePlugin } = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const { merge } = require('webpack-merge')
-const common = require('./webpack.common')
+const { DefinePlugin } = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common");
 
 module.exports = merge(common, {
-  mode: 'production',
+  mode: "production",
   module: {
-    rules: [{
-      test: /\.ts(x?)$/,
-      loader: 'ts-loader',
-      exclude: /node_modules/
-    }, {
-      test: /\.scss$/,
-      use: [{
-        loader: MiniCssExtractPlugin.loader
-      }, {
-        loader: 'css-loader',
-        options: {
-          modules: true
-        }
-      }, {
-        loader: 'sass-loader'
-      }]
-    }]
+    rules: [
+      {
+        test: /\.ts(x?)$/,
+        loader: "ts-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+          {
+            loader: "sass-loader",
+          },
+        ],
+      },
+    ],
   },
   externals: {
-    react: 'React',
-    axios: 'axios',
-<<<<<<< HEAD
-    'react-dom': 'ReactDOM',
-    'react-router-dom': 'ReactRouterDOM'
-=======
-    'react-dom': 'ReactDOM'
->>>>>>> refactor/recoil
+    react: "React",
+    axios: "axios",
+    "react-dom": "ReactDOM",
+    "react-router-dom": "ReactRouterDOM",
   },
   plugins: [
     new DefinePlugin({
-      'process.env.API_URL': JSON.stringify('https://bdev.onrender.com/api')
+      "process.env.API_URL": JSON.stringify("https://bdev.onrender.com/api"),
     }),
     new HtmlWebpackPlugin({
-      template: './template.prod.html'
+      template: "./template.prod.html",
     }),
     new MiniCssExtractPlugin({
-      filename: 'main-bundle-[fullhash].css'
+      filename: "main-bundle-[fullhash].css",
     }),
     new FaviconsWebpackPlugin({
-      logo: './public/favicon.png'
-    })
-  ]
-})
+      logo: "./public/favicon.png",
+    }),
+  ],
+});

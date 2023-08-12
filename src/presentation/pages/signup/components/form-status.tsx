@@ -6,9 +6,7 @@ import React from 'react'
 
 const FormStatus: React.FC = () => {
   const state = useRecoilValue(signUpState)
-  return (
-    <FormStatusBase state={state} />
-  )
+  return <FormStatusBase state={state} />
 }
 
 export default FormStatus

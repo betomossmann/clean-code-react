@@ -1,5 +1,3 @@
 describe('', () => {
-  it('Should', () => {
-
-  })
+  it('Should', () => {})
 })

@@ -5,7 +5,7 @@ import { fireEvent, render, type RenderResult } from '@testing-library/react'
 import { faker } from '@faker-js/faker'
 
 const makeSut = (fieldName: string): RenderResult => {
-  return render(<InputBase name={fieldName} state={ { } } setState={null} />)
+  return render(<InputBase name={fieldName} state={{}} setState={null} />)
 }
 
 describe('Input Component', () => {

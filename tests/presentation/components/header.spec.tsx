@@ -18,7 +18,11 @@ const makeSut = (account = mockAccountModel()): SutTypes => {
   const setCurrentAccountMock = jest.fn()
   const mockedState = { setCurrentAccount: setCurrentAccountMock, getCurrentAccount: () => account }
   render(
-    <RecoilRoot initializeState={({ set }) => { set(currentAccountState, mockedState) }}>
+    <RecoilRoot
+      initializeState={({ set }) => {
+        set(currentAccountState, mockedState)
+      }}
+    >
       <Router location={history.location} navigator={history}>
         <Header />
       </Router>
