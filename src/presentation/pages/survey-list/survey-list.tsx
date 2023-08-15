@@ -21,15 +21,11 @@ const SurveyList: FC<Props> = ({ loadSurveyList }: Props) => {
     setState((old) => ({ surveys: [], error: '', reload: !old.reload }))
   }
 
-  useEffect(() => {
-    resetSurveyListState()
-  }, [])
+  useEffect(() => resetSurveyListState(), [])
   useEffect(() => {
     loadSurveyList
       .loadAll()
-      .then((surveys) => {
-        setState((old) => ({ ...old, surveys }))
-      })
+      .then((surveys) => setState((old) => ({ ...old, surveys })))
       .catch(handleError)
   }, [state.reload])
 
