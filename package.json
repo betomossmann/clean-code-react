@@ -19,7 +19,6 @@
     "test:cypress": "cypress open",
     "test:cypress:run": "cypress run",
     "test:cypress:ci": "start-server-and-test dev:base http-get://localhost:8080 test:cypress:run",
-    "check": "pnpm-check -u -s",
     "prepare": "husky install"
   },
   "keywords": [],
