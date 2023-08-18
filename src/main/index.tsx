@@ -1,14 +1,9 @@
 import '@/presentation/styles/global.scss'
 import { Router } from '@/main/routes'
 
-import * as React from 'react'
-import * as ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
 
-ReactDOM.createRoot(document.getElementById('main')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
-  </React.StrictMode>
-)
+const container = document.getElementById('main')
+const root = createRoot(container!)
+root.render(<Router />)
